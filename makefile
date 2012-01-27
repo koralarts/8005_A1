@@ -27,7 +27,7 @@ process:
 
 # Process Debug:
 process-d:
-	$(GCC) $(FLAGS) -o $(DDIR)/process -g -D process $(SDIR)/a1.c
+	$(GCC) $(FLAGS) -o $(DDIR)/process -ggdb -D process $(SDIR)/a1.c
 
 # Thread:
 thread:
@@ -35,7 +35,7 @@ thread:
 
 # Thread Debug:
 thread-d:
-	$(GCC) $(FLAGS) -o $(DDIR)/thread -g -D thread -pthread $(SDIR)/a1.c
+	$(GCC) $(FLAGS) -o $(DDIR)/thread -ggdb -D thread -pthread $(SDIR)/a1.c
 
 # Clean:
 clean:

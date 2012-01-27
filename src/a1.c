@@ -65,13 +65,14 @@ int main(int argc, char* argv[])
 	char* fileName = DEF_FILENAME;
 	int option = 0;
 	int workers = MIN_WORKERS;
-	PPARAMS params = malloc(sizeof(PARAMS));
-
-	params->times = MIN_TIMES;
 
 	#ifdef process
 	int status;
 	#endif
+
+	PPARAMS params = malloc(sizeof(PARAMS));
+
+	params->times = MIN_TIMES;
 	
 	if(argc > 7) {
 		fprintf(stderr, "Too many arguments.\n");
@@ -84,14 +85,14 @@ int main(int argc, char* argv[])
 		case 'w':
 			if((workers = atoi(optarg)) == 0 || workers < MIN_WORKERS) {
 				fprintf(stderr, "-w: Invalid input.\n");
-				fprintf(stderr, USAGE, argv[0], MIN_WORKERS, MIN_TIMES);
+				fprintf(stderr, USAGE, argv[0]);
 				return EXIT_FAILURE;
 			}
 			break;
 		case 't':
 			if((params->times = atoi(optarg)) == 0 || params->times < MIN_TIMES) {
 				fprintf(stderr, "-t: Invalid input.\n");
-				fprintf(stderr, USAGE, argv[0], MIN_WORKERS, MIN_TIMES);
+				fprintf(stderr, USAGE, argv[0]);
 				return EXIT_FAILURE;
 			}
 
@@ -101,7 +102,7 @@ int main(int argc, char* argv[])
 			break;
 		default:
 			fprintf(stderr, "Invalid input.\n");
-			fprintf(stderr, USAGE, argv[0], MIN_WORKERS, MIN_TIMES);
+			fprintf(stderr, USAGE, argv[0]);
 			return EXIT_FAILURE;
 		} /* switch(option) */
 	} /* while((option = getopt(argc, argv, ":i:")) != -1) */
